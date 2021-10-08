@@ -1,6 +1,4 @@
-import { useEffect } from "react"
 import Card from "../styled/card"
-import GrabFavorites from "./GrabFavorites"
 
 function FavoriteList({handleDeleteFavorite, favList, grabFavorites, isLoggedIn, loggedInUser}) {
     
