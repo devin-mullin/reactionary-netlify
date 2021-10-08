@@ -17,9 +17,9 @@ function WordOfTheDay() {
                         }} ],},
             shortdef: [] },
         ])
-    const slug = generateSlug(1)
     
     useEffect(() => {
+        const slug = generateSlug(1)
         fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${slug}?key=818a2b96-1647-4667-8769-8f3de5ad1509`)
         .then(r => r.json())
         .then(data => {
@@ -58,7 +58,7 @@ function WordOfTheDay() {
              <h3>{randomWord[0].hwi.prs[0].mw}</h3>
              <PlayButton onClick={playAudio}>Say Word</PlayButton>
              {randomWord[0].shortdef.map((word, index) => <p key={index}>{word}</p>)}
-             {isImage ? <img src={image}/> : null}
+             {isImage ? <img src={image} alt={randomWordName}/> : null}
          </Card>
      )
 }

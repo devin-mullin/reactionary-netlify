@@ -16,7 +16,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [favList, setFavList] = useState([])
   const [thesaurusSearchWord, setThesaurusSearchWord] = useState("")
-  const [favoriteArray, setFavoriteArray] = useState([])
  
   
   function getWordDefinition(searchValue) {
@@ -79,12 +78,13 @@ function App() {
       
   }
 
-  const grabFavorites = () => {
+   const grabFavorites = useCallback(
+    ()=>{
     setFavList(value => value = [])
     fetch(`${process.env.REACT_APP_API_URL}/user/${loggedInUser[0].id}/favorites?_expand=words`, {method: 'GET'})
     .then(res=>res.json())
     .then(data => anotherFunction(data))
-  }
+  })
       
 
   const anotherFunction = (data) => {

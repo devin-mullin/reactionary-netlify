@@ -58,7 +58,7 @@ function WordCard({searchWord, addFavorite, isLoggedIn}) {
                 return <p key={index}>[ {word} ]</p>
                 
                 })}
-            {isImage ? <img src={image}/> : null}            
+            {isImage ? <img src={image} alt={searchWordName}/> : null}            
         </Card>
     )
 }
