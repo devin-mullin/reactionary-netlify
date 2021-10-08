@@ -99,7 +99,7 @@ function App() {
       
 
   function handleDeleteFavorite(favID) {
-    fetch(`${process.env.REACT_APP_API_URL}/favorites/${favID}`, {
+    fetch(`${process.env.REACT_APP_API_URL}git /favorites/${favID}`, {
       method: 'DELETE'
     })
     .then(grabFavorites())
