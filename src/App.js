@@ -33,7 +33,7 @@ function App() {
 
   function userLogin(e, creds) {
     e.preventDefault()
-    fetch(`/users?username=${creds.username}`)
+    fetch(`http://localhost/users?username=${creds.username}`)
     .then(r=>r.json())
     .then(users => {
       if(users.length > 0){
@@ -48,7 +48,7 @@ function App() {
 
 
   const addFavorite = (word) => { 
-    fetch('/words', {
+    fetch('http://localhost/words', {
       method: 'POST', 
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -67,7 +67,7 @@ function App() {
       userId: loggedInUser[0].id,
       wordId: word.id
         }
-      fetch('/favorites', {
+      fetch('http://localhost/favorites', {
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
@@ -81,7 +81,7 @@ function App() {
 
   const grabFavorites = () => {
     setFavList(value => value = [])
-    fetch(`/user/${loggedInUser[0].id}/favorites?_expand=words`)
+    fetch(`http://localhost/user/${loggedInUser[0].id}/favorites?_expand=words`)
     .then(res=>res.json())
     .then(data => anotherFunction(data))
   }
@@ -89,7 +89,7 @@ function App() {
 
   const anotherFunction = (data) => {
       data.forEach(objs=>{ 
-      fetch(`/words/${objs.wordId}`)
+      fetch(`http://localhost/words/${objs.wordId}`)
       .then(res=>res.json())
       .then(data=> {
         const favObj = {...data, favoriteID: objs.id}
@@ -99,7 +99,7 @@ function App() {
       
 
   function handleDeleteFavorite(favID) {
-    fetch(`/favorites/${favID}`, {
+    fetch(`http://localhost/favorites/${favID}`, {
       method: 'DELETE'
     })
     .then(grabFavorites())
